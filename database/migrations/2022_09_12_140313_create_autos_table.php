@@ -15,6 +15,11 @@ class CreateAutosTable extends Migration
     {
         Schema::create('autos', function (Blueprint $table) {
             $table->id();
+            $table->string('brand');
+            $table->string('model');
+            $table->string('color');
+            $table->string('license_plate', 5);
+            $table->integer('mileage');
             $table->timestamps();
         });
     }
