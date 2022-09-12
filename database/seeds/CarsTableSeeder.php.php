@@ -3,7 +3,7 @@
 use App\Car;
 use Illuminate\Database\Seeder;
 
-class TrainsTableSeeder extends Seeder
+class CarsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,6 @@ class TrainsTableSeeder extends Seeder
 
         for($i = 0;$i < 40; $i++){
             $newCar = new Car();
-            $newCar->$name = $faker->words(1);
             $newCar->$brand = $faker->words(1);
             $newCar->$model = $faker->words(1);
             $newCar->$color = $faker->words(1);
