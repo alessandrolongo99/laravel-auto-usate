@@ -13,10 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
-Route::get('/', function () {
-    return view('home');
-});
-=======
 Route::get('/', "CarController@index")->name('home');
->>>>>>> origin/feat/model-controller-web
