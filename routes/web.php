@@ -13,4 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', "CarController@index")->name('home');
+=======
+Route::get('/', function () {
+    return view('home');
+});
+>>>>>>> 45edd410d52d5c3522ba31b383d279a9d5badf40
