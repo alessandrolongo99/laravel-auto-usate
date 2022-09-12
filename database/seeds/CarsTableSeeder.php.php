@@ -19,7 +19,7 @@ class TrainsTableSeeder extends Seeder
             $newCar->$brand = $faker->words(1);
             $newCar->$model = $faker->words(1);
             $newCar->$color = $faker->words(1);
-            $newCar->$license_plate = $faker->words(1);
+            $newCar->$license_plate =$faker->regexify('[A-Z]{3}[0-4]{2}');
             $newCar->$mileage = $faker->words(1);
 
             $newCar->save();
