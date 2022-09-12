@@ -16,11 +16,11 @@ class TrainsTableSeeder extends Seeder
         for($i = 0;$i < 40; $i++){
             $newCar = new Car();
             $newCar->$name = $faker->words(1);
-            $newCar->string('model');
-            $newCar->string('color');
-            $newCar->string('license_plate', 5);
-            $newCar->integer('mileage');
-            $table->
+            $newCar->$brand = $faker->words(1);
+            $newCar->$model = $faker->words(1);
+            $newCar->$color = $faker->words(1);
+            $newCar->$license_plate = $faker->words(1);
+            $newCar->$mileage = $faker->words(1);
 
             $newCar->save();
         }
