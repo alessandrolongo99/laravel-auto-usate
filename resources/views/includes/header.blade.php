@@ -16,7 +16,7 @@
                     </li>
                 </ul>
                 <span class="navbar-text">
-                    <a class="btn btn-outline-light {{ request()->routeIs('cars.create') ? 'active' : "" }}" href="{{ route('cars.create') }}">Add new comic</a>
+                    <a class="btn btn-outline-light {{ request()->routeIs('cars.create') ? 'active' : "" }}" href="{{ route('cars.create') }}">Add new car</a>
                 </span>
             </div>
         </div>
