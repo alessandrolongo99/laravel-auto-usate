@@ -21,7 +21,7 @@
                     <td><a href="#">{{ $car->brand }}</a></td>
                     <td>{{ $car->model }}</td>
                     <td>{{ $car->color }}</td>
-                    <td>{{ $car->licence_plate }}</td>
+                    <td>{{ $car->license_plate }}</td>
                     <td>{{ $car->mileage }}</td>
                     <td>
                       <div class="d-flex">
@@ -40,20 +40,4 @@
       </table>
 </div>
    
-@endsection
-
-@section('delete-script')
-  <script>
-
-    // Prendiamo tutti gli elementi con questa classe,ovvero i bottoni delete
-    const deleteFormElement = document.querySelectorAll('.delete-car-form');
-
-    deleteFormElement.forEach(formButton=>{
-      formButton.addEventListener('submit', function(event){
-        event.preventDefault();
-        const result = window.confirm('Sei sicuro di voler eliminare l\'elemento?');
-        if(result) this.submit();
-      })
-    })
-  </script>
 @endsection
