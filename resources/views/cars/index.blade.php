@@ -26,7 +26,7 @@
                     <td>
                       <div class="d-flex">
                         <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-warning me-2">Edit</a>
-                        <form action="#" method="POST" class="delete-car-form">
+                        <form action="{{ route('cars.destroy', $car->id) }}" method="POST" class="delete-car-form">
                           @csrf
                           @method('DELETE')
 

@@ -14,7 +14,7 @@
                     <h6>Kilometers: {{ $car->mileage }}km</h6>
                 </div>
                 <div class="form-group p-3 d-flex justify-content-center">
-                    <a href="#" class="btn btn-sm btn-success mx-1">
+                    <a href="{{ route('cars.edit',$car->id) }}" class="btn btn-sm btn-success mx-1">
                         Edit car
                     </a>
                     <form action="{{ route('cars.destroy', $car->id) }}" method="POST" class="form-car-delete" data-car-name="{{ $car->title }}">
