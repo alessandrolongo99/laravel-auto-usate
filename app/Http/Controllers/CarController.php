@@ -62,9 +62,10 @@ class CarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Car $car)
     {
-        //
+        
+        return view('cars.edit', compact('car'));
     }
 
     /**
@@ -76,7 +77,11 @@ class CarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $car = Car::findOrFail($id);
+        $car->update($data);
+
+        return redirect()->route('cars.show', compact('car'));
     }
 
     /**
