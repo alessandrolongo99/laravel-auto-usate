@@ -3,6 +3,11 @@
 @section('main-content')
     <div class="p-5">
         <h2 class="p-3 text-center">Tutti i cars</h2>
+            @if (session('delete'))
+                <div class="alert alert-danger">
+                    {{ session('delete') }}
+                </div>
+            @endif
         <table class="table table-striped table-dark">
             <thead>
                 <tr>
@@ -11,8 +16,8 @@
                     <th>Colore</th>
                     <th>Targa</th>
                     <th>Km</th>
-                    <th>Modifica</th>
                     <th>Optional</th>
+                    <th>Modifica</th>
                 </tr>
             </thead>
             <tbody>
