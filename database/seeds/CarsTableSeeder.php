@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use App\Car;
+use App\Model\Car;
 use Illuminate\Database\Seeder;
 
 class CarsTableSeeder extends Seeder
