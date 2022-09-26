@@ -18,4 +18,8 @@ class Car extends Model
         'license_plate',
         'mileage',
     ];
+
+    public function optionals(){
+        return $this->belongsToMany('App\Optional');
+    }
 }
