@@ -13,6 +13,7 @@
             <th>Targa</th>
             <th>Km</th>
             <th>Modifica</th>
+            <th>Optional</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
                     <td>{{ $car->color }}</td>
                     <td>{{ $car->license_plate }}</td>
                     <td>{{ $car->mileage }}</td>
+                    
                     <td>
                       <div class="d-flex">
                         <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-warning me-2">Edit</a>
