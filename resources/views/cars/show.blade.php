@@ -12,12 +12,22 @@
                     <h5 class="card-title">Modello: {{ $car->model }}</h5>
                     <p class="card-text">Colore: {{ $car->color }}</p>
                     <h6>Kilometers: {{ $car->mileage }}km</h6>
+                    <p><strong>Optionals:</strong>
+                        @if (isset($car->optionals))
+                            @foreach ($car->optionals as $optional)
+                                {{ $optional->name }} -
+                            @endforeach
+                        @else
+                            No optionals selected for this cars
+                        @endif
+                    </p>
                 </div>
                 <div class="form-group p-3 d-flex justify-content-center">
-                    <a href="{{ route('cars.edit',$car->id) }}" class="btn btn-sm btn-success mx-1">
+                    <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-sm btn-success mx-1">
                         Edit car
                     </a>
-                    <form action="{{ route('cars.destroy', $car->id) }}" method="POST" class="form-car-delete" data-car-name="{{ $car->title }}">
+                    <form action="{{ route('cars.destroy', $car->id) }}" method="POST" class="form-car-delete"
+                        data-car-name="{{ $car->title }}">
                         @csrf
                         @method('DELETE')
 
