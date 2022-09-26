@@ -108,7 +108,7 @@ class CarController extends Controller
                     'max:10',
                     Rule::unique('cars')->ignore($data['brand'], 'brand'),
                 ],
-                'optionals' => 'exists:optionals,id|min:1|between:1,3',
+                'optionals' => 'required|exists:optionals,id|min:1|between:1,3',
                 'model' => 'required|min:3|max:50',
                 'color' => 'required|max:30',
                 'license_plate' => 'required|size:5',
