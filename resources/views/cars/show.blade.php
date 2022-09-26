@@ -3,6 +3,11 @@
 @section('main-content')
     <div class="container my-5 py-2">
         <div class="row">
+            @if (session('session'))
+                <div class="alert alert-success">
+                    {{ session('session') }}
+                </div>
+            @endif
             <div class="card text-center">
                 <div class="card-header">
                     DETAILS OF CAR

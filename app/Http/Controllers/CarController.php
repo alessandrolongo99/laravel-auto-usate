@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Optional;
 use App\Model\Car;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -39,6 +40,20 @@ class CarController extends Controller
     public function store(Request $request)
     {
         $newData = $request->all();
+
+    
+        $validateData = $request->validate(
+            [
+                'brand' => 'required|min:3|max:10',
+                'model' => 'required|min:3|max:50',
+                'color' => 'required|max:30',
+                'license_plate' => 'required|size:5',
+                'mileage' => 'required|integer|min:1',
+                'optionals' => 'exists:optionals,id'
+            ],
+        );
+
+
         $car = new Car();
         $car->fill($newData);
         $car->save();
@@ -47,7 +62,7 @@ class CarController extends Controller
             $car->optionals()->sync($newData['optionals']);
         } 
         
-        return redirect()->route('cars.show', compact('car'));
+        return redirect()->route('cars.show', compact('car'))->with('session', $car->brand . ' ' . $car->model . ' è stato aggiunto.');
     }
 
     /**
@@ -84,6 +99,23 @@ class CarController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+
+        $validateData = $request->validate(
+            [
+                'brand' => [
+                    'required',
+                    'min:3',
+                    'max:10',
+                    Rule::unique('cars')->ignore($data['brand'], 'brand'),
+                ],
+                'optionals' => 'exists:optionals,id|min:1|between:1,3',
+                'model' => 'required|min:3|max:50',
+                'color' => 'required|max:30',
+                'license_plate' => 'required|size:5',
+                'mileage' => 'required|integer|min:1'
+            ],
+        );
+
         $car = Car::findOrFail($id);
 
         $car->update($data);
@@ -93,9 +125,8 @@ class CarController extends Controller
         } else{
             $car->optionals()->detach();
         }
-        
 
-        return redirect()->route('cars.show', compact('car'));
+        return redirect()->route('cars.show', compact('car'))->with('session', $car->brand . ' ' . $car->model . ' è stato modificato.');
     }
 
     /**
@@ -108,6 +139,6 @@ class CarController extends Controller
     {
         $car = Car::findOrFail($id);
         $car->delete();
-        return redirect()->route('cars.index');
+        return redirect()->route('cars.index')->with('delete', $car->brand . ' ' . $car->model . ' è stato cancellato.');
     }
 }
