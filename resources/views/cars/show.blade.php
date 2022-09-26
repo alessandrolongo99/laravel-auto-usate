@@ -13,13 +13,13 @@
                     <p class="card-text">Colore: {{ $car->color }}</p>
                     <h6>Kilometers: {{ $car->mileage }}km</h6>
                     <p><strong>Optionals:</strong>
-                        @if (isset($car->optionals))
-                            @foreach ($car->optionals as $optional)
+                      
+                            @forelse ($car->optionals as $optional)
                                 {{ $optional->name }} -
-                            @endforeach
-                        @else
-                            No optionals selected for this cars
-                        @endif
+                            @empty
+                                Non sono presenti optional
+                            @endforelse
+                        
                     </p>
                 </div>
                 <div class="form-group p-3 d-flex justify-content-center">

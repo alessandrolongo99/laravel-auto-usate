@@ -34,6 +34,19 @@
     value="{{ old('license_plate',$car->license_plate ?? '') }}">
     <div class="form-text">Insert car's license_plate</div>
 </div>
+@foreach ($optionals as $optional)
+<div class="p-2">
+  @if ($errors->any())
+    <input type="checkbox" name="optionals[]" id="optionals" value="{{ $optional->id }}"
+    {{ in_array($optional->id, old('optionals', [])) ? 'checked' : ''}}>
+    #{{ $optional->name }}
+  @else
+    <input type="checkbox" name="optionals[]" id="optionals" value="{{ $optional->id }}"
+    {{ $car->optionals->contains($optional) ? 'checked' : '' }}>
+    #{{ $optional->name }}
+  @endif
+</div>
+@endforeach
 
 <div class="d-flex justify-content-center">
     <button class="btn btn-lg btn-primary" type="submit">
