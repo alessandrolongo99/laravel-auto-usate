@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Model\Car;
+use Dotenv\Result\Success;
 use Illuminate\Http\Request;
 use Symfony\Component\VarDumper\Cloner\Data;
 
@@ -54,7 +55,16 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        //
+        $car = Car::find($id);
+
+        if($car){
+            return response()->json([
+                "success" => true,
+                "results" => $car,
+            ]);
+        }else{
+            return response('', 404);
+        }
     }
 
     /**
