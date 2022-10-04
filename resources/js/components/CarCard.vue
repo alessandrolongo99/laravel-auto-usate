@@ -3,7 +3,7 @@
     <div class="card-header"> Brand: {{ car.brand }} </div>
     <div class="card-body">
       <h5 class="card-title">
-          Modello: {{ car.model }}
+        <router-link :to="'/SingleCar/' + car.id">Modello: {{ car.model }}</router-link>  
       </h5>
       <p class="card-text">
         Colore: {{ car.color }}
@@ -27,6 +27,12 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang='scss' scoped>
+  a{
+    text-decoration: none;
+    color: black;
+    &:hover{
+        color:magenta;
+    }
+   }
 </style>

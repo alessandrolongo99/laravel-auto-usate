@@ -1,48 +1,27 @@
 <template>
 
-    <div class="container">
-        <h3 class="text-center py-4"> Tutte le macchine </h3>
-        <div class="d-flex justify-content-center flex-wrap">
-            <CarCard v-for="car in cars" :key="car.id" :car="car" />
-        </div>
+    <div class="container ms_pt-3">
+        <Header />
+        <router-view></router-view>
+        
     </div>
     
 </template>
     
     <script>
-    import Axios from 'axios';
-    import CarCard from './CarCard.vue';
-
+    
+    import Header from '../components/Header.vue'
     export default {
         name: "App",
-        data:function(){
-            return{
-                cars : [],
-                isLoading : true,
-            }
-        },
         components:{
-            CarCard,
-        },
-        methods:{
-            getCars(){
-                Axios.get('/api/cars',{
-                }).then((response) => {
-                    console.log(response.data.results);
-                    this.cars = response.data.results.data;
-                }).catch((error) => {
-                    console.error(error);
-                })
-            },
-        },
-        created(){
-            this.getCars();
+            Header
         }
-    
     
     }
     </script>
     
-    <style>
-    
+    <style scoped>
+      .ms_pt-3 {
+         padding-top: 3rem;
+       }
     </style>
